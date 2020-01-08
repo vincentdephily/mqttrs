@@ -1,4 +1,24 @@
-# 0.2 (unreleased)
+# 0.3 (unreleased)
+
+## API changes
+
+* Added opt-in serde support to facilitate session and ack management (storing subscriptions and
+  pids to disk or database). The actual encode()/decode() APIs are unchanged.
+* Upgrated bytes dependency to 0.5. This brings growable buffers and a nicer API, [amongst other
+  things](https://github.com/tokio-rs/bytes/blob/master/CHANGELOG.md).
+* Implemented `Default for Pid`, `From<u16> for Pid`, and `TryFrom<Pid> for u16`. The `try_from()`
+  method already existed but now comes from the `std::convert::TryFrom` trait.
+
+## Bugfixes
+
+* Fix off-by one error when adding to a Pid wraps over.
+
+## Other changes
+
+* The minimum rust version is now 1.39.
+
+
+# 0.2 (2019-10-25)
 
 This is a fairly large release with API fixes and improvements, bug fixes, and much better test
 coverage and documentation.
